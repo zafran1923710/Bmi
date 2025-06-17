@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>بی ایم آئی کیلکولیٹر - زفران شہزاد</title>
+
+  <!-- Noto Nastaliq Urdu Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      background: linear-gradient(135deg, #e0f7fa, #fffde7);
+      text-align: center;
+      padding: 30px;
+      color: #333;
+    }
+    h1 {
+      color: #006064;
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+    .container {
+      background: white;
+      max-width: 450px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      direction: ltr;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      background-color: #009688;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00796b;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #4e342e;
+    }
+    footer {
+      margin-top: 40px;
+      color: #444;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>بی ایم آئی کیلکولیٹر</h1>
+
+    <!-- Attached Image -->
+    <img src="https://i.ibb.co/pPJY93s/bmi-chart.png" alt="BMI Urdu Image" />
+
+    <input type="number" id="weight" placeholder="وزن (کلوگرام میں)" />
+    <input type="number" id="height" placeholder="قد (سینٹی میٹر میں)" />
+    <br />
+    <button onclick="calculateBMI()">حساب کریں</button>
+    <div id="result"></div>
+  </div>
+
+  <footer>
+    ڈیزائن کردہ: زفران شہزاد | WhatsApp: 0316-55-400-74
+  </footer>
+
+  <script>
+    function calculateBMI() {
+      const weight = parseFloat(document.getElementById("weight").value);
+      const height = parseFloat(document.getElementById("height").value) / 100;
+
+      if (!weight || !height) {
+        document.getElementById("result").innerText = "براہ کرم درست معلومات درج کریں۔";
+        return;
+      }
+
+      const bmi = weight / (height * height);
+      let status = "";
+
+      if (bmi < 18.5) status = "کم وزن (غیر موزوں)";
+      else if (bmi < 24.9) status = "نارمل (موزوں)";
+      else if (bmi < 29.9) status = "زیادہ وزن (غیر موزوں)";
+      else status = "موٹاپا (غیر موزوں)";
+
+      document.getElementById("result").innerText =
+        `آپ کا بی ایم آئی: ${bmi.toFixed(2)} ہے - ${status}`;
+    }
+  </script>
+</body>
+</html>
